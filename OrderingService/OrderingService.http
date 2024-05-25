@@ -1,6 +1,22 @@
 @OrderingService_HostAddress = http://localhost:5081
 
-GET {{OrderingService_HostAddress}}/weatherforecast/
+GET {{OrderingService_HostAddress}}/orders/1
 Accept: application/json
+
+###
+
+GET {{OrderingService_HostAddress}}/outbox
+Accept: application/json
+
+###
+
+
+POST {{OrderingService_HostAddress}}/orders
+Content-Type: application/json
+
+{
+    "id": 1,
+    "product": "Sample Product"
+}
 
 ###
