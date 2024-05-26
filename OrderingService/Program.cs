@@ -11,6 +11,8 @@ builder.Services.AddDbContext<OrderingDbContext>(options =>
 });
 builder.Services.AddScoped<OrderingDbContext>();
 
+builder.Services.AddHostedService<OutboxProcessor>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
