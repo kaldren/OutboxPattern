@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /OrderingService/OrderingDb.db-shm
 /OrderingService/OrderingDb.db-wal
+/OrderingService/OrderingDb.db
