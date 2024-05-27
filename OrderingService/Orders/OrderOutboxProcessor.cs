@@ -40,8 +40,6 @@ public class OrderOutboxProcessor : IHostedService, IDisposable
 
     private void ProcessOutbox(object state)
     {
-        //Console.WriteLine("Processing Outbox at: {time}", DateTimeOffset.Now);
-
         using (var scope = _serviceProvider.CreateScope())
         {
             var _context = scope.ServiceProvider.GetRequiredService<OrderingDbContext>();
