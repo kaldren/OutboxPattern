@@ -1,6 +1,6 @@
-﻿namespace OrderingService;
+﻿namespace OrderingService.Orders;
 
-public class Outbox
+public class OrderOutbox
 {
     public int Id { get; set; }
     public int AggregateId { get; set; }

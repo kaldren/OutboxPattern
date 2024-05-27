@@ -1,11 +1,11 @@
 ﻿using System.Text.Json;
 
-namespace OrderingService;
+namespace OrderingService.Orders;
 
 public interface IOrderService
 {
     Order? GetOrder(int id);
-    ICollection<Outbox>? GetAllOutbox();
+    ICollection<OrderOutbox>? GetAllOutbox();
     Order? CreateOrder(Order order);
 }
 
@@ -25,7 +25,7 @@ public class OrderService : IOrderService
             context.Orders.Add(order);
             context.SaveChanges();
 
-            var outbox = new Outbox
+            var outbox = new OrderOutbox
             {
                 AggregateId = order.Id,
                 AggregateType = "Order",
@@ -44,7 +44,7 @@ public class OrderService : IOrderService
         return context.Orders.FirstOrDefault(o => o.Id == order.Id);
     }
 
-    public ICollection<Outbox>? GetAllOutbox()
+    public ICollection<OrderOutbox>? GetAllOutbox()
     {
         return context.Outbox.ToList();
     }
@@ -53,7 +53,7 @@ public class OrderService : IOrderService
     {
         Console.WriteLine($"Fetching order with id: {id}");
 
-        Order? order = context.Orders.FirstOrDefault<Order>(GetOrder => GetOrder.Id == id);
+        Order? order = context.Orders.FirstOrDefault(GetOrder => GetOrder.Id == id);
 
         return order;
     }

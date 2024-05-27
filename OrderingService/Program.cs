@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using OrderingService;
+using OrderingService.Orders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +11,7 @@ builder.Services.AddDbContext<OrderingDbContext>(options =>
 });
 builder.Services.AddScoped<OrderingDbContext>();
 
-builder.Services.AddHostedService<OutboxProcessor>();
+builder.Services.AddHostedService<OrderOutboxProcessor>();
 
 var app = builder.Build();
 
@@ -57,4 +57,3 @@ using (var scope = app.Services.CreateScope())
 
 app.Run();
 
-public record Order(int Id, string Product);
